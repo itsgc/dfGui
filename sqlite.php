@@ -3,8 +3,8 @@
 include 'include/html_wrap.php';
 include 'include/sql_setup.php';
 echo $htmlHead;
-echo $domainBoxOpen;
 echo $formOpen;
+echo $domainBoxOpen;
 while ($uniqueIds = $domainList->fetchArray()) {
     $singleId = $uniqueIds[0];
     $domainQuery = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $singleId . ';');
@@ -14,8 +14,8 @@ while ($uniqueIds = $domainList->fetchArray()) {
         echo '<input type="checkbox" name="Id[]" value="' . $singleId . '">' . $singleDomain . '<br />';
     }
 }
-echo $formClose;
 echo $domainBoxClose;
+echo $formClose;
 echo $htmlFooter;
 
 ?>
