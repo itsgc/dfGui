@@ -12,8 +12,9 @@ if ($deletedDnameIdArray == '') {
         $domainAdd = "INSERT INTO domains(dname,enabled) VALUES('" . $newDnameClean . "','1');";
         while ($domainAddOutput = $dbInit->query($domainAdd)) {
             echo "Hai inserito " . $newDnameClean . " nella lista dei domini filtrati!\n<br />Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
+            system("php asapush.php");
             header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
-        exit();
+            exit();
         }
     }
 }
@@ -31,10 +32,13 @@ else {
                  $deletedDnameArray = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $deletedDnameIdClean . ';');
                   while($deletedDname = $deletedDnameArray->fetchArray()) {
                       echo $deletedDname[0] . "<br />";
-                      exit();
+                      system("php asapush.php");
+                      header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
                   }
+                 break;
             }
         }
+        echo "Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
     }
 }
 ?>
