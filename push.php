@@ -9,8 +9,12 @@ if ($deletedDnameIdArray == '') {
     }
     else {
         $newDnameClean = htmlspecialchars($newDname);
-        echo "INSERT INTO domains(dname,enabled) VALUES('" . $newDnameClean . "',1);";
+        $domainAdd = "INSERT INTO domains(dname,enabled) VALUES('" . $newDnameClean . "','1');";
+        while ($domainAddOutput = $dbInit->query($domainAdd)) {
+            echo "Hai inserito " . $newDnameClean . " nella lista dei domini filtrati!\n<br />Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
+            header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
         exit();
+        }
     }
 }
 else {
@@ -19,12 +23,16 @@ else {
           exit();
     }
     else {
-        echo "Are these the domains you want to remove from the filter? <br />";
+        echo "Hai rimosso dal filtro i seguenti domini: <br />";
         foreach ($deletedDnameIdArray as $deletedDnameId) {
             $deletedDnameIdClean = htmlspecialchars($deletedDnameId);
-            $deletedDnameArray = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $deletedDnameIdClean . ';');
-            while($deletedDname = $deletedDnameArray->fetchArray()) {
-                echo $deletedDname[0] . "<br />";
+            $domainDisable = "UPDATE domains SET enabled = '0' WHERE Id = '" . $deletedDnameIdClean . "';";
+            while($domainDisableOutput = $dbInit->query($domainDisable)) {
+                 $deletedDnameArray = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $deletedDnameIdClean . ';');
+                  while($deletedDname = $deletedDnameArray->fetchArray()) {
+                      echo $deletedDname[0] . "<br />";
+                      exit();
+                  }
             }
         }
     }

@@ -7,7 +7,7 @@ echo $formOpen;
 echo $domainBoxOpen;
 while ($uniqueIds = $domainList->fetchArray()) {
     $singleId = $uniqueIds[0];
-    $domainQuery = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $singleId . ';');
+    $domainQuery = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $singleId . ' AND enabled = 1;');
     /*Fetch real domains from Id */
     while ($domainName = $domainQuery->fetchArray()) {
         $singleDomain = $domainName[0];
