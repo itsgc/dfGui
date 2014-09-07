@@ -1,0 +1,6 @@
+<?php
+$outputFile = '';
+$asaIp = '';
+$username = "";
+$password = "";
+?>
