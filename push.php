@@ -2,6 +2,7 @@
 include 'include/sql_setup.php';
 $deletedDnameIdArray = $_POST['Id'];
 $newDname = $_POST['dname'];
+$redirMessage = "Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
 if ($deletedDnameIdArray == '') {
     if ($newDname == '') {
         echo "Nessun dominio selezionato!";
@@ -11,11 +12,12 @@ if ($deletedDnameIdArray == '') {
         $newDnameClean = htmlspecialchars($newDname);
         $domainAdd = "INSERT INTO domains(dname,enabled) VALUES('" . $newDnameClean . "','1');";
         while ($domainAddOutput = $dbInit->query($domainAdd)) {
-            echo "Hai inserito " . $newDnameClean . " nella lista dei domini filtrati!\n<br />Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
-            system("php asapush.php");
-            header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
-            exit();
+            echo "Hai inserito " . $newDnameClean . " nella lista dei domini filtrati!\n<br />";
+            break;
         }
+        header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
+        echo $redirMessage;
+        system("php asapush.php");
     }
 }
 else {
@@ -32,13 +34,13 @@ else {
                  $deletedDnameArray = $dbInit->query('SELECT dname FROM domains WHERE Id = ' . $deletedDnameIdClean . ';');
                   while($deletedDname = $deletedDnameArray->fetchArray()) {
                       echo $deletedDname[0] . "<br />";
-                      system("php asapush.php");
-                      header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
                   }
                  break;
             }
         }
-        echo "Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
+        header("Refresh: 5; URL=http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php");
+        echo $redirMessage; 
+        system("php asapush.php");
     }
 }
 ?>

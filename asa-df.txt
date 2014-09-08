@@ -3,8 +3,6 @@ dynamic-filter blacklist
   name www.skype.com
   name skype.com
   name googlevideo.com
-  name s.youtube.com
-  name youtube.it
   name youtube.com
   name ad.doubleclick.net
   name ytimg.com
@@ -12,8 +10,6 @@ dynamic-filter blacklist
   name ask.com
   name imdb.com
   name vimeo.com
-  name dailymotion.com
-  name expedia.net
   name trivago.com
   name tripadvisor.com
   name xhamster.com
@@ -21,7 +17,6 @@ dynamic-filter blacklist
   name redtube.com
   name pornhub.com
   name youporn.com
-  name xvideos.com
   name yieldmanager.com
   name doubleclick.net
   name adcash.com
@@ -67,24 +62,23 @@ dynamic-filter blacklist
   name bakeca.it
   name autoscout24.it
   name googlesyndication.com
-  name italia.fm
   name italiafm.net
-  name www.repubblica.it
   name www.slashdot.org
   name www.reddit.com
   name www.arstechnica.com
   name www.sjgames.com
   name www.grooveshark.com
   name freenode.net
-  name www.html.it
   name www.elafood.com
-  name clorofillaroma.it
   name www.kotaku.com
   name www.readyplayerone.com
   name www.anandtech.com
-  name www.hypertherm.com
-  name php.com
-  name www.php.com
-  name hackhack.com
   name slash.com
+  name www.freenode.net
+  name www.freenode.org
+  name arstech.net
+  name arstechs.net
+  name arsteck.net
+  name mandarinaduck.org
+  name mandarinaducks.org
 exit
