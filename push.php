@@ -1,8 +1,12 @@
 <?php 
 include 'include/sql_setup.php';
+include 'include/html_wrap.php';
 $deletedDnameIdArray = $_POST['Id'];
 $newDname = $_POST['dname'];
 $redirMessage = "Sarai reindirizzato alla home in 5 secondi.\n<br /> Clicca <a href='http://" . $_SERVER['HTTP_HOST'] . "/sqlite.php'>qui</a> per essere reindirizzato immediatamente.<p />";
+echo $htmlGenericHead;
+echo $divGenericFrame;
+echo "<blockquote>";
 if ($deletedDnameIdArray == '') {
     if ($newDname == '') {
         echo "Nessun dominio selezionato!";
@@ -43,4 +47,7 @@ else {
         system("php asapush.php");
     }
 }
+echo "</blockquote>";
+echo "</div>";
+echo $htmlFooter;
 ?>

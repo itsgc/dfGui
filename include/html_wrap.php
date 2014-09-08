@@ -1,11 +1,14 @@
 <?php
-$databaseAction = "Modifica 1, 2, 3";
-$htmlHead = "<html>\n<head>\n<title>\nCisco ASA Dynamic Filter Frontend\n</title>\n<script type='text/javascript' src='js/select_all.js' async></script></head>\n<body>\n";
+/* $htmlHead = "<html>\n<head>\n<title>\nCisco ASA Dynamic Filter Frontend\n</title>\n<script type='text/javascript' src='js/select_all.js' async></script></head>\n<body>\n"; */
+$htmlHead = "<html><head><meta http-equiv='content-type' content='text/html; charset=utf-8'></meta><title>Cisco ASA Dynamic Filter Frontend</title><script type='text/javascript' src='js/select_all.js' async></script></head><body><div style='width: 75% margin-left: auto; margin-right: auto; text-align: center;'><h1>Gestione Filtro Domini</h1></div><div style='height: 65%; width: 75%; border: 5px solid blue; margin-left: auto; border-radius: 25px; background-color: #00B2B2; margin-right: auto;'>";
 $formOpen = "<form name='input' action='push.php' method='post'>";
-$formClose = "<input type='checkbox' onClick='toggle(this)' /> Seleziona Tutti/Nessuno\n<p />Aggiungi dominio alla blacklist: <input type='text' name='dname'>\n<p /><input type='submit' />\n</form>";
-$domainBoxOpen =  "<div style='height:360px;width:320px;border:1px solid #ccc;font:16px/26px;overflow:auto;'>";
-$domainBoxClose = "</div>";
+/* $formClose = "<input type='checkbox' onClick='toggle(this)' /> Seleziona Tutti/Nessuno\n<p />Aggiungi dominio alla blacklist: <input type='text' name='dname'>\n<p /><input type='submit' />\n</form>"; */
+$formClose = "</form>";
+/* $domainBoxOpen =  "<div style='height:360px;width:320px;border:1px solid #ccc;font:16px/26px;overflow:auto;'>"; */
+$domainBoxOpen = "<div style='height:80%; width:25%; float:right; position: relative; margin-left: 5%; margin-right: auto;'><h3>Aggiungi dominio</h3><div style='height: 85%; width: 100%;'><input type='text' name='dname'><div style=\"margin-top: 125%;\"><input type='submit' value=\"Inoltra modifiche\" /></div></div></div><div style='height:80%; width:25%; float: right; position: relative; margin-right: 5%; margin-left: 5%;'><h3>Disabilita filtro per</h3><div style=\"height: 85%; width: 100%; overflow: auto;\">";
+/* $domainBoxClose = "</div>"; */
+$domainBoxClose = "</div><div><p><input type='checkbox' onClick='toggle(this)' /> Seleziona Tutti/Nessuno</p></div></div><div style='height:80%; width: 30%; float: right; position: relative; margin-left: 2%; margin-right: 2%;'><h3>Istruzioni</h3><div style=\"height: 85%; width: 100%; overflow: auto; font-size: 12px;\"></p><div style=\"text-align: justify; margin-right: 3%;\"><ul><li>Lo script richiede circa 20 secondi per completare l'azione.</li><li>Non è possibile aggiungere un nuovo dominio alla lista e disabilitarne altri allo stesso tempo.</li><li>Si possono però selezionare domini multipli per cui disattivare il filtro.</li></ul></div><p>I domini filtrati sono memorizzati in un database SQLite3 (collocato in db/dynamicfilter.sqlite).</p><p>Ci sono 3 file principali:<br /><ul><li><h3>sqlite.php</h3> - Effettua le chiamate POST e invia i dati inseriti dall'utente al motore.</li><li><h3>push.php</h3> - È il motore principale che effettua tutti i controlli e salva i dati nel database e lancia l'iniettore.</li><li><h3>asapush.php</h3> - Script \"iniettore\" che contatta l'ASA e carica le modifiche in base ai domini presenti nel database.Le credenziali e l'indirizzo dell'ASA si configurano in include/config.php.</li></ul></div></div></div>";
 $htmlFooter = "</body>\n</html>";
-
+$divGenericFrame = "<div style=\"width: 75% margin-left: auto; margin-right: auto; text-align: center;\"><h1>Gestione Filtro Domini</h1></div><div style=\"height: 65%; width: 75%; border: 5px solid blue; margin-left: auto; border-radius: 25px; background-color: #00B2B2; margin-right: auto; overflow: auto;\">";
+$htmlGenericHead = "<html><head><meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"></meta><title>Cisco ASA Dynamic Filter Frontend </title><script type='text/javascript' src='js/select_all.js' async></script></head><body>";
 ?>
-

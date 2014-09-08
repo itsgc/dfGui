@@ -1,11 +1,7 @@
 no dynamic-filter blacklist
 dynamic-filter blacklist
-  name www.skype.com
-  name skype.com
-  name googlevideo.com
   name youtube.com
   name ad.doubleclick.net
-  name ytimg.com
   name bing.com
   name ask.com
   name imdb.com
@@ -13,7 +9,6 @@ dynamic-filter blacklist
   name trivago.com
   name tripadvisor.com
   name xhamster.com
-  name tube8.com
   name redtube.com
   name pornhub.com
   name youporn.com
